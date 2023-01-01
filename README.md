@@ -27,3 +27,4 @@ yarn hardhat <task name>
 OR
 npx hardhat <task name> 
 ```
+It also shows how to test solidity contracts using hardhat
