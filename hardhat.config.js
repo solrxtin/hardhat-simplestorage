@@ -1,10 +1,14 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("@nomiclabs/hardhat-etherscan");
 require("dotenv").config();
-require("./tasks/block-number")
+require("./tasks/block-number");
+require("hardhat-gas-reporter");
+require("solidity-coverage");
 
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL;
 const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY;
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const COINMARKET_API_KEY = process.env.COINMARKET_API_KEY;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -27,4 +31,11 @@ module.exports = {
     etherscan: {
         apiKey: ETHERSCAN_API_KEY,
     },
+    gasReporter: {
+      enabled: true,
+      outputFile: "gas-reporter.txt",
+      noColors: true,
+      currency: "USD",
+      coinmarketcap: COINMARKET_API_KEY
+    }
 }
